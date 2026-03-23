@@ -10,6 +10,12 @@ class Invoices
     }
     public function create():string
     {
-        return "Create Invoice";
+        return '<form action="/invoices/create" method="POST"><label for="amount">Amount</label><input type="text" name="amount" id="amount"><button type="submit">Create Invoice</button></form>';
+
+    }
+    public function store()
+    {
+        $amount= $_POST['amount'];
+        var_dump($amount);
     }
 }
