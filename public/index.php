@@ -7,6 +7,8 @@ session_start();
 const STORAGE_PATH = __DIR__ . '/../storage';
 const VIEW_PATH = __DIR__ . '/../views';
 
+try{
+
 $router = new App\Router();
 
 $router->get('/', [App\Controllers\HomeController::class,'index'])
@@ -16,3 +18,7 @@ $router->get('/', [App\Controllers\HomeController::class,'index'])
         ->post('/invoices/create', [App\Controllers\InvoicesController::class,'store']);
 
 echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
+}catch(App\Exceptions\RouterNotFoundException $e){
+    http_response_code(404);
+    echo \App\View::make('error/404');
+}
