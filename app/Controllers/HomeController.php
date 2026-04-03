@@ -18,9 +18,9 @@ class HomeController
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
 
-        $email ='xyz@something';
-        $name = 'xyz';
-        $amount = 100;
+        $email ='joe@something';
+        $name = 'joe';
+        $amount = 23;
 
         try {
             $db->beginTransaction();
