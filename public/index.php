@@ -2,7 +2,9 @@
 
 declare(strict_types = 1);
 require_once __DIR__ . '/../vendor/autoload.php';
-session_start();
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
 const STORAGE_PATH = __DIR__ . '/../storage';
 const VIEW_PATH = __DIR__ . '/../views';
