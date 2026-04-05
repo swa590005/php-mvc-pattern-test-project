@@ -6,6 +6,7 @@ use App\App;
 use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\InvoicesController;
+use App\Config;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -26,4 +27,10 @@ $router->get('/', [HomeController::class,'index'])
         ->post('/invoices/create', [InvoicesController::class,'store']);
 
 
-(new App($router, ['uri'=> $_SERVER['REQUEST_URI'],'method'=>$_SERVER['REQUEST_METHOD']] ))->run();
+(new App($router,
+    [
+        'uri'=> $_SERVER['REQUEST_URI'],
+        'method'=>$_SERVER['REQUEST_METHOD']
+    ],
+    new Config($_ENV)
+))->run();

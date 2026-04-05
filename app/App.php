@@ -6,8 +6,15 @@ use App\Exceptions\RouterNotFoundException;
 
 class App
 {
-    public function __construct(protected $router, protected array $request)
+    private static DB $db;
+    public function __construct(protected $router, protected array $request, protected Config $config)
     {
+        static::$db = new DB($config->db ?? []);
+    }
+
+    public static function getDb(): DB
+    {
+        return static::$db;
     }
 
     public function run()
