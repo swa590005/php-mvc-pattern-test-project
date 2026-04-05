@@ -12,11 +12,11 @@ class Config
     {
         $this->config = [
             'db' => [
-                'host'=>$_ENV['DB_HOST'],
-                'user'=>$_ENV['DB_USER'],
-                'db_pass'=>$_ENV['DB_PASS'],
-                'database'=>$_ENV['DB_DATABASE'],
-                'driver'=>$_ENV['DB_DRIVER'] ?? 'mysql'
+                'host'=>$env['DB_HOST'],
+                'user'=>$env['DB_USER'],
+                'db_pass'=>$env['DB_PASS'],
+                'database'=>$env['DB_DATABASE'],
+                'driver'=>$env['DB_DRIVER'] ?? 'mysql'
             ]
         ];
     }
