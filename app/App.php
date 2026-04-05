@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Exceptions\RouterNotFoundException;
+use App\Exceptions\RouteNotFoundException;
 
 class App
 {
     private static DB $db;
-    public function __construct(protected $router, protected array $request, protected Config $config)
+    public function __construct(protected Router $router, protected array $request, protected Config $config)
     {
         static::$db = new DB($config->db ?? []);
     }
@@ -20,10 +20,10 @@ class App
     public function run()
     {
         try {
-            $this->router->resolve($this->request['uri'], strtolower($this->request['method']));
-        } catch (RouterNotFoundException) {
+          echo $this->router->resolve($this->request['uri'], strtolower($this->request['method']));
+        } catch (RouteNotFoundException) {
             http_response_code(404);
-            echo \App\View::make('error/404');
+           echo View::make('error/404');
         }
     }
 }
