@@ -3,7 +3,6 @@
 namespace Unit;
 use App\Exceptions\RouteNotFoundException;
 use App\Router;
-use http\Client\Curl\User;
 use PHPUnit\Framework\TestCase;
 
 class RouterTest extends TestCase
